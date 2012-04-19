@@ -26,7 +26,7 @@ MAP
 
   # Start of LAYER DEFINITIONS ---------------------------------------------
   LAYER # Departements polygon layer begins here
-    NAME         departements
+    NAME         departements_poly
     DATA         GEOFLADept_FR_Corse_AV_L93/DEPARTEMENT
     STATUS       OFF
     TYPE         POLYGON
@@ -36,7 +36,7 @@ MAP
     # senseless to define more than ten on a "normal" layer.  There are
     # situations, however, where you might have to do it.)
     CLASS
-      NAME       "Les départements de France Métropolitaine"
+      NAME       "Departements"
 
       # There are styles in a class, just like there are classes in a layer,
       # just like there are layers in a map.  You can define multiple styles in
@@ -44,7 +44,29 @@ MAP
       # layers in a map.
       STYLE
         COLOR        232 232 232
-        OUTLINECOLOR 32 32 32
+      END
+    END
+  END # Departements polygon layer ends here
+
+  LAYER # Departements polygon layer begins here
+    NAME         departements_line
+    DATA         GEOFLADept_FR_Corse_AV_L93/DEPARTEMENT
+    STATUS       OFF
+    TYPE         LINE
+
+    # The class object is defined within the layer object.  You can define as
+    # many classes as you need (well, there are limits as with layers, but it's
+    # senseless to define more than ten on a "normal" layer.  There are
+    # situations, however, where you might have to do it.)
+    CLASS
+      NAME       "Limites departement"
+
+      # There are styles in a class, just like there are classes in a layer,
+      # just like there are layers in a map.  You can define multiple styles in
+      # a class just as you can define multiple classes in a layer and multiple
+      # layers in a map.
+      STYLE
+        COLOR 32 32 32
       END
     END
   END # Departements polygon layer ends here
