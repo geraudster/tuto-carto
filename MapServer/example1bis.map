@@ -11,9 +11,9 @@
 # at the very bottom of this map file, are keyword/value pairs and other
 # objects.
 MAP
-  IMAGETYPE      PNG24
+  IMAGETYPE      PNG
   EXTENT         99226.000000 6049647.000000  1242375.000000 7110524.000000
-  SIZE           600 450
+  SIZE           800  600
   SHAPEPATH      "../data"
   IMAGECOLOR     255 255 255
   FONTSET        "../fonts/fonts.list"
@@ -62,14 +62,68 @@ MAP
 
 
   LAYER # MODIS raster layer begins here
-    NAME         modis
+    NAME         modis1
     DATA         "SCAN1000_FR_SO_L93/SC1000_0050_6580_L93.tif"
     STATUS       OFF
     TYPE         RASTER
 #    PROCESSING   "BANDS=1"
     OFFSITE      180 213 254
   END # MODIS raster layer ends here
+  LAYER # MODIS raster layer begins here
+    NAME         modis2
+    DATA         "SCAN1000_FR_NE_L93/SC1000_0600_7130_L93.tif"
+    STATUS       OFF
+    TYPE         RASTER
+#    PROCESSING   "BANDS=1"
+    OFFSITE      180 213 254
+  END # MODIS raster layer ends here
+  LAYER # MODIS raster layer begins here
+    NAME         modis3
+    DATA         "SCAN1000_FR_NO_L93/SC1000_0050_7130_L93.tif"
+    STATUS       OFF
+    TYPE         RASTER
+#    PROCESSING   "BANDS=1"
+    OFFSITE      180 213 254
+  END # MODIS raster layer ends here
+  LAYER # MODIS raster layer begins here
+    NAME         modis4
+    DATA         "SCAN1000_FR_SE_L93/SC1000_0600_6580_L93.tif"
+    STATUS       OFF
+    TYPE         RASTER
+#    PROCESSING   "BANDS=1"
+    OFFSITE      180 213 254
+  END # MODIS raster layer ends here
+  LAYER # MODIS raster layer begins here
+    NAME         modis5
+    DATA         "SCAN1000_Corse_L93/SC1000_1150_6240_L93.tif"
+    STATUS       OFF
+    TYPE         RASTER
+#    PROCESSING   "BANDS=1"
+    OFFSITE      180 213 254
+  END # MODIS raster layer ends here
   
+  LAYER # Midi-Pyrenees departements polygon layer begins here
+    NAME         departements_poly_pyrenees
+    DATA         GEOFLADept_FR_Corse_AV_L93/DEPARTEMENT
+    STATUS       OFF
+    TYPE         POLYGON
+
+    CLASSITEM    "NOM_REGION"
+    
+    # The class object is defined within the layer object.  You can define as
+    # many classes as you need (well, there are limits as with layers, but it's
+    # senseless to define more than ten on a "normal" layer.  There are
+    # situations, however, where you might have to do it.)
+    # Note that order of CLASS section is important
+    CLASS
+      NAME       "Midi-Pyrénées"
+      EXPRESSION 'MIDI-PYRENEES'
+      STYLE
+        COLOR        198 198 255
+      END
+    END
+  END # Departements polygon layer ends here
+
   LAYER # Departements line layer begins here
     NAME         departements_line
     DATA         GEOFLADept_FR_Corse_AV_L93/DEPARTEMENT
@@ -108,12 +162,12 @@ MAP
         SHADOWSIZE 2 2
         TYPE TRUETYPE
         FONT arial-bold
-        SIZE 5
+        SIZE 8
         ANTIALIAS TRUE
         POSITION AUTO
         PARTIALS FALSE
         MINDISTANCE 300
-        BUFFER 4
+        BUFFER 5
       END # end of label
     END
   END # Departements label layer ends here
