@@ -13,9 +13,10 @@
 MAP
   IMAGETYPE      PNG
   EXTENT         99226.000000 6049647.000000  1242375.000000 7110524.000000
-  SIZE           400 300
+  SIZE           600 450
   SHAPEPATH      "../data"
   IMAGECOLOR     255 255 255
+  FONTSET        "../fonts/fonts.list"
 
   # Layer objects are defined beneath the map object.  You need at least one
   # layer defined in your map file before you can display a map...  You can
@@ -32,6 +33,9 @@ MAP
     TYPE         POLYGON
 
     CLASSITEM    "NOM_REGION"
+    
+    LABELITEM    "NOM_DEPT"
+    
     # The class object is defined within the layer object.  You can define as
     # many classes as you need (well, there are limits as with layers, but it's
     # senseless to define more than ten on a "normal" layer.  There are
@@ -43,6 +47,20 @@ MAP
       STYLE
         COLOR        198 198 255
       END
+    
+      LABEL
+        COLOR 132 31 31
+        SHADOWCOLOR 218 218 218
+        SHADOWSIZE 2 2
+        TYPE TRUETYPE
+        FONT arial-bold
+        SIZE 5
+        ANTIALIAS TRUE
+        POSITION AUTO
+        PARTIALS FALSE
+        MINDISTANCE 300
+        BUFFER 4
+      END # end of label
     END
     CLASS
       NAME       "Departements"
