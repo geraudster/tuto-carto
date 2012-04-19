@@ -31,13 +31,21 @@ MAP
     STATUS       OFF
     TYPE         POLYGON
 
+    CLASSITEM    "NOM_REGION"
     # The class object is defined within the layer object.  You can define as
     # many classes as you need (well, there are limits as with layers, but it's
     # senseless to define more than ten on a "normal" layer.  There are
     # situations, however, where you might have to do it.)
+    # Note that order of CLASS section is important
+    CLASS
+      NAME       "Midi-Pyrénées"
+      EXPRESSION 'MIDI-PYRENEES'
+      STYLE
+        COLOR        198 198 255
+      END
+    END
     CLASS
       NAME       "Departements"
-
       # There are styles in a class, just like there are classes in a layer,
       # just like there are layers in a map.  You can define multiple styles in
       # a class just as you can define multiple classes in a layer and multiple
