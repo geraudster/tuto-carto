@@ -13,13 +13,20 @@
 MAP
   IMAGETYPE      PNG
   EXTENT         99226.000000 6049647.000000  1242375.000000 7110524.000000
+  # EXTENT         -5 10 40 53 # Extent for WGS84
   SIZE           800  600
   SHAPEPATH      "../data"
   IMAGECOLOR     255 255 255
   FONTSET        "../fonts/fonts.list"
-  
+
+  WEB
+    IMAGEPATH "c:/OSGeo4W/tmp/"
+    IMAGEURL  "/tmp/"
+  END
+
   PROJECTION
-    "init=epsg:4326"
+    "init=epsg:2154" # RGF93/Lambert-93
+#    "init=epsg:4326"
   END
 
   # Layer objects are defined beneath the map object.  You need at least one
@@ -62,49 +69,34 @@ MAP
         COLOR        232 232 232
       END
     END
+    
+    PROJECTION
+      "init=epsg:2154" # RGF93/Lambert-93
+#    "init=epsg:4326"
+    END
   END # Departements polygon layer ends here
 
 
-  LAYER # MODIS raster layer begins here
-    NAME         modis1
-    DATA         "SCAN1000_FR_SO_L93/SC1000_0050_6580_L93.tif"
-    STATUS       OFF
+  LAYER # Coastlines WMS map from GLOBE
+    NAME         coast_globe
     TYPE         RASTER
-#    PROCESSING   "BANDS=1"
-    OFFSITE      180 213 254
-  END # MODIS raster layer ends here
-  LAYER # MODIS raster layer begins here
-    NAME         modis2
-    DATA         "SCAN1000_FR_NE_L93/SC1000_0600_7130_L93.tif"
+#    OFFSITE      0 0 0
     STATUS       OFF
-    TYPE         RASTER
-#    PROCESSING   "BANDS=1"
-    OFFSITE      180 213 254
-  END # MODIS raster layer ends here
-  LAYER # MODIS raster layer begins here
-    NAME         modis3
-    DATA         "SCAN1000_FR_NO_L93/SC1000_0050_7130_L93.tif"
-    STATUS       OFF
-    TYPE         RASTER
-#    PROCESSING   "BANDS=1"
-    OFFSITE      180 213 254
-  END # MODIS raster layer ends here
-  LAYER # MODIS raster layer begins here
-    NAME         modis4
-    DATA         "SCAN1000_FR_SE_L93/SC1000_0600_6580_L93.tif"
-    STATUS       OFF
-    TYPE         RASTER
-#    PROCESSING   "BANDS=1"
-    OFFSITE      180 213 254
-  END # MODIS raster layer ends here
-  LAYER # MODIS raster layer begins here
-    NAME         modis5
-    DATA         "SCAN1000_Corse_L93/SC1000_1150_6240_L93.tif"
-    STATUS       OFF
-    TYPE         RASTER
-#    PROCESSING   "BANDS=1"
-    OFFSITE      180 213 254
-  END # MODIS raster layer ends here
+    CONNECTIONTYPE WMS
+    CONNECTION "http://viz.globe.gov/viz-bin/wmt.cgi?"
+
+    METADATA
+      "wms_srs" "EPSG:4326"
+      "wms_name" "COASTLINES"
+      "wms_server_version" "1.1.1"
+      "wms_format" "image/png"
+      "wms_exceptions_format" "application/vnd.ogc.se_xml"
+    END
+
+    PROJECTION
+      "init=epsg:4326"
+    END
+  END # Modis WMS image ends here
   
   LAYER # Midi-Pyrenees departements polygon layer begins here
     NAME         departements_poly_pyrenees
